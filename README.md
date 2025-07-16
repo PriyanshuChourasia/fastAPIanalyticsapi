@@ -6,8 +6,15 @@
 
 
 
+### To start this project
+1. Install Python and create virtual environment inside root folder
 
+<br/>
 
+```
+python3 -m venv .venv
+```
+<br/>
 
 
 
