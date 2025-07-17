@@ -1,4 +1,4 @@
-FROM python:3.10.10-alpine
+FROM python:3.10.10-slim-bullseye
 
 RUN python -m venv /opt/.venv
 
@@ -9,20 +9,20 @@ ENV PATH=/opt/.venv/bin:$PATH
 RUN pip install --upgrade pip
 
 # set python related environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# Install dependencies for our mini vm
-RUN api-get update && apt-get install -y \
-    # for postgres \
+# Install os dependencies for our mini vm
+RUN apt-get update && apt-get install -y \
+    # for postgres
     libpq-dev \
-    # for pillow \
+    # for Pillow
     libjpeg-dev \
-    # for CairoSVG \
+    # for CairoSVG
     libcairo2 \
-    # other \
+    # other
     gcc \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/*
 
 #create the mini vm's code directory
 RUN mkdir -p /code

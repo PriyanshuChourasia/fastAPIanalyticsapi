@@ -65,9 +65,13 @@ RUN mkdir -p /code
 build: this options build the package of this project
 -t: defines the tag name
 run: Runs the project
+analytics-api: This is the container name
+-f: Means which file it will follow to build a docker file
+.: This dot means the build will happen in local root folder
+-it : This -it tag makes it interactive
 ```
-docker build -t analytics-api
-docker run
+docker build -t analytics-api -f Dockerfile .
+docker run analytics-api
 ```
 
 
